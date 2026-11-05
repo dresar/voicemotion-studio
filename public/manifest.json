@@ -1,0 +1,19 @@
+{
+  "name": "VoiceMotion Studio",
+  "short_name": "VoiceMotion",
+  "description": "Video pendek vertikal dengan suara AI bahasa Indonesia.",
+  "start_url": "/app/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#E4EBF5",
+  "theme_color": "#E4EBF5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+.env
+*.db
+*.db-*
+*.exe
+*.exe~
+voicemotion
+voicemotion.exe
+uploads/*
+!uploads/.gitkeep
+uploads/tts/*
+!uploads/tts/.gitkeep
+static/

@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "neu-soft",
+    "name": "Neu-Soft",
+    "category": "Tenang",
+    "theme": "paper",
+    "palette": ["#E4EBF5", "#3F7BFF", "#2A62E0", "#1F2D4A"],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "permukaan biru es yang lembut, bentuk membulat, bayangan halus, satu aksen biru tegas, komposisi lapang dan tenang",
+    "transitions": ["fade", "slide", "zoom"],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy, scale: s.lerp(0.72, 1, k), rotate: s.wave(0.35, 0.025) }, () => { s.circle(0, 0, 150 * s.p, { fill: s.c.blue, alpha: 0.18 }); s.rect(-120, -90, 240, 180, { r: 28, fill: s.c.paper }); s.asset(\"spark\", 150, -110, { size: 40, color: s.c.yellow, draw: k, rotate: s.wave(0.3, 0.08) }); s.words(\"Ide jadi nyata\", 0, 150, { size: 42, color: s.c.ink, mode: \"rise\", start: 0.15 }); }); s.sfx(\"pop\", 0.1, 0.6);"
+  },
+  {
+    "slug": "modern-flat",
+    "name": "Modern Flat",
+    "category": "Ilustrasi",
+    "theme": "paper",
+    "palette": ["#FFFFFF", "#FF6B6B", "#14B8A6", "#1F2D4A"],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "ilustrasi flat geometris, warna solid, garis tegas, ruang putih lega, satu objek fokus di tengah",
+    "transitions": ["slide", "wipe", "fade"],
+    "sampleCode": "const k = s.at(0, 0.45); s.group({ x: s.cx, y: s.cy, scale: 0.9 + 0.1 * k }, () => { s.rect(-180, -220, 360, 440, { r: 24, fill: s.c.white, stroke: s.c.ink, width: 5 }); s.circle(-60, -110, 46, { fill: s.c.red }); s.rect(-120, 10, 240, 28, { r: 14, fill: s.c.ink, draw: k }); s.rect(-120, 60, 180, 22, { r: 11, fill: s.c.teal, draw: k }); s.words(\"Lebih sederhana\", 0, 230, { size: 36, color: s.c.ink, mode: \"slide\", start: 0.25 }); }); s.sfx(\"tick\", 0.2, 0.4);"
+  },
+  {
+    "slug": "papan-tulis",
+    "name": "Papan Tulis",
+    "category": "Ilustrasi",
+    "theme": "paper",
+    "palette": ["#F7F1DE", "#1F2D4A", "#1F9D6B", "#B7791F"],
+    "finishing": "sketch",
+    "heavy": false,
+    "descriptionForPrompt": "gambar tangan di atas kertas, garis tinta sedikit bergetar, arsiran ringan, nuansa catatan personal",
+    "transitions": ["fade", "wipe", "slide"],
+    "sampleCode": "const k = s.spring(0, \"smooth\"); s.group({ x: s.cx, y: s.cy + 20, rotate: -0.02 }, () => { s.rect(-220, -260, 440, 520, { r: 18, fill: s.c.paper, stroke: s.c.ink, width: 3, wobble: 1 }); s.line(-180, -160, 180, -160, { stroke: s.c.ink, width: 3, draw: k, wobble: 1 }); s.words(\"Catat idemu\", 0, -80, { size: 44, color: s.c.ink, mode: \"fade\", start: 0.2 }); s.check(-120, 40, 46, { stroke: s.c.green, width: 5, draw: k }); s.line(-60, 40, 150, 40, { stroke: s.c.ink, width: 3, draw: k }); }); s.sfx(\"type\", 0.15, 0.5);"
+  },
+  {
+    "slug": "kertas-gunting",
+    "name": "Kertas Gunting",
+    "category": "Pop",
+    "theme": "paper",
+    "palette": ["#FFD166", "#EF476F", "#118AB2", "#1F2D4A"],
+    "finishing": "sketch",
+    "heavy": false,
+    "descriptionForPrompt": "bentuk kertas gunting berlapis, tepi sedikit kasar, warna ceria, bayangan potongan yang tegas",
+    "transitions": ["slide", "zoom", "fade"],
+    "sampleCode": "const k = s.pop(0, 0.55); s.group({ x: s.cx, y: s.cy, rotate: s.wave(0.25, 0.04) }, () => { s.shape([[-170, -140], [0, -220], [170, -140], [140, 150], [0, 210], [-140, 150]], { fill: s.c.yellow, stroke: s.c.ink, width: 4, draw: k }); s.circle(0, -30, 52, { fill: s.c.red }); s.words(\"Potong jadi cerita\", 0, 210, { size: 34, color: s.c.ink, mode: \"pop\", start: 0.2 }); }); s.sfx(\"swish\", 0.2, 0.5);"
+  },
+  {
+    "slug": "futuristik-data",
+    "name": "Futuristik Data",
+    "category": "Teknologi",
+    "theme": "night",
+    "palette": ["#0F172A", "#6EA0FF", "#14B8A6", "#F8FAFC"],
+    "finishing": "flat",
+    "heavy": true,
+    "descriptionForPrompt": "latar gelap, garis data bercahaya, grid tipis, biru dan teal neon, kesan presisi dan teknologi",
+    "transitions": ["zoom", "wipe", "slide"],
+    "sampleCode": "const k = s.spring(0, \"heavy\"); s.group({ x: s.cx, y: s.cy }, () => { for (let i = 0; i < 6; i += 1) { const h = 40 + 120 * s.rand(i); s.rect(-200 + i * 68, 120 - h, 44, h, { r: 8, fill: i % 2 ? s.c.teal : s.c.blue, draw: k }); } s.circle(0, -160, 90, { stroke: s.c.blue, width: 4, draw: k }); s.words(\"Data bicara\", 0, 240, { size: 38, color: s.c.white, mode: \"rise\", start: 0.2 }); }); s.sfx(\"riser\", 0.1, 0.5);"
+  },
+  {
+    "slug": "pop-ceria",
+    "name": "Pop Ceria",
+    "category": "Pop",
+    "theme": "paper",
+    "palette": ["#FF595E", "#FFCA3A", "#8AC926", "#1982C4"],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "warna primer cerah, bentuk bulat besar, gerakan memantul, komposisi simetris yang ramai tapi rapi",
+    "transitions": ["zoom", "slide", "fade"],
+    "sampleCode": "const k = s.spring(0, \"bouncy\"); const colors = [s.c.red, s.c.yellow, s.c.green, s.c.blue]; s.group({ x: s.cx, y: s.cy }, () => { colors.forEach((color, i) => { const angle = i * Math.PI / 2 + s.wave(0.2, 0.15); s.circle(Math.cos(angle) * 150, Math.sin(angle) * 150, 54, { fill: color, draw: k }); }); s.circle(0, 0, 96, { fill: s.c.white, stroke: s.c.ink, width: 4, draw: k }); s.asset(\"star\", 0, -180, { size: 46, color: s.c.yellow, draw: k }); s.words(\"Ayo mulai\", 0, 250, { size: 40, color: s.c.ink, mode: \"pop\", start: 0.2 }); }); s.sfx(\"tada\", 0.1, 0.6);"
+  },
+  {
+    "slug": "lanskap-tenang",
+    "name": "Lanskap Tenang",
+    "category": "Tenang",
+    "theme": "dusk",
+    "palette": ["#F4E1C1", "#2A9D8F", "#7A9E7E", "#264653"],
+    "finishing": "sketch",
+    "heavy": false,
+    "descriptionForPrompt": "lanskap minimal bergaya cat air, horizon lapang, warna bumi dan hijau tenang, gerak lambat seperti angin",
+    "transitions": ["fade", "slide", "wipe"],
+    "sampleCode": "const k = s.at(0, 0.8); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, -120, 70, { fill: s.c.yellow, alpha: 0.9 }); s.line(-260, 90, 260, 90, { stroke: s.c.teal, width: 6, draw: k }); s.shape([[-260, 90], [-120, -40], [0, 70], [120, -70], [260, 90]], { fill: s.c.green, draw: k }); s.words(\"Tarik napas\", 0, 200, { size: 40, color: s.c.ink, mode: \"fade\", start: 0.25 }); }); s.sfx(\"ding\", 0.3, 0.4);"
+  },
+  {
+    "slug": "tipografi-kinetik",
+    "name": "Tipografi Kinetik",
+    "category": "Tipografi",
+    "theme": "paper",
+    "palette": ["#F8FAFC", "#1F2D4A", "#3F7BFF", "#D6E4FF"],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "teks besar sebagai objek utama, kata masuk satu per satu, garis aksen tipis, komposisi editorial yang bersih",
+    "transitions": ["slide", "wipe", "fade"],
+    "sampleCode": "const k = s.at(0, 0.5); s.group({ x: s.cx, y: s.cy }, () => { s.words(\"SATU KATA\", 0, -80, { size: 54, color: s.c.ink, mode: \"slide\", start: 0, gap: 0.05 }); s.words(\"SATU GERAK\", 0, 30, { size: 54, color: s.c.blue, mode: \"rise\", start: 0.15, gap: 0.05 }); s.rect(-170, 120, 340, 8, { r: 4, fill: s.c.primary, draw: k }); }); s.sfx(\"whoosh\", 0.1, 0.4);"
+  }
+]

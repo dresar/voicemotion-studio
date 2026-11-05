@@ -1,0 +1,89 @@
+:root {
+  --bg: #E4EBF5;
+  --bg-raised: #EBF1FA;
+  --bg-sunken: #DCE5F1;
+  --shadow-light: #FFFFFF;
+  --shadow-dark: #B9C6DA;
+  --line: #CBD6E8;
+
+  --primary: #3F7BFF;
+  --primary-strong: #2A62E0;
+  --primary-soft: #D6E4FF;
+
+  --text: #1E293B;
+  --text-muted: #64748B;
+  --text-faint: #94A3B8;
+
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --ink-dark: #0F172A;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-pill: 8px;
+
+  --neu-scale: .35;
+  --d1: 1.5px;
+  --b1: 3.5px;
+  --d2: 2.5px;
+  --b2: 6px;
+  --d3: 4px;
+  --b3: 10px;
+
+  --neu-raised-sm: var(--d1) var(--d1) var(--b1) var(--shadow-dark), calc(-1 * var(--d1)) calc(-1 * var(--d1)) var(--b1) var(--shadow-light);
+  --neu-raised: var(--d2) var(--d2) var(--b2) var(--shadow-dark), calc(-1 * var(--d2)) calc(-1 * var(--d2)) var(--b2) var(--shadow-light);
+  --neu-raised-lg: var(--d3) var(--d3) var(--b3) var(--shadow-dark), calc(-1 * var(--d3)) calc(-1 * var(--d3)) var(--b3) var(--shadow-light);
+  --neu-inset: inset var(--d1) var(--d1) var(--b1) var(--shadow-dark), inset calc(-1 * var(--d1)) calc(-1 * var(--d1)) var(--b1) var(--shadow-light);
+  --neu-pressed: inset var(--d1) var(--d1) var(--b1) var(--shadow-dark), inset calc(-1 * var(--d1)) calc(-1 * var(--d1)) var(--b1) var(--shadow-light);
+
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --t-fast: 120ms;
+  --t-base: 200ms;
+  --t-slow: 320ms;
+
+  --font-ui: "Plus Jakarta Sans", Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-hand: "Caveat", "Patrick Hand", cursive;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --neu-scale: .4;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --line: #8FA3C4;
+    --shadow-dark: #98A9C4;
+    --text-muted: #3B4E70;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 1ms;
+    --t-base: 1ms;
+    --t-slow: 1ms;
+  }
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  overflow-x: hidden;
+  font-size: 13px;
+  line-height: 1.45;
+}

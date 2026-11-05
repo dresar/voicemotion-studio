@@ -1,0 +1,16 @@
+[Unit]
+Description=VoiceMotion Studio
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/voicemotion/backend
+ExecStart=/opt/voicemotion/backend/voicemotion
+Restart=always
+RestartSec=5
+EnvironmentFile=/opt/voicemotion/backend/.env
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target
