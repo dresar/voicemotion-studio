@@ -367,6 +367,10 @@ Spesifikasi:
 * "theme" salah satu: "paper" (terang), "dusk" (senja, suasana berat atau transisi), "night" (gelap, momen klimaks atau serius). Variasikan dengan sengaja.
 * Teks di video memakai font ${font.label}; jangan meminta font lain di kolom visual.
 * Dekorasi ${decorationLabel(config)} dengan tekstur ${textureLabel(config)}; aset dekorasi hanya dipakai jika memperkuat aksi scene.
+* [KINETIC SVG & ANIMATION SYSTEM]:
+  - When generating SVG visual scenes, incorporate lively animated SVG paths and keyframes inspired by LivelyIcons (stroke-dasharray draw animations, scale pulses, float oscillations, and kinetic micro-interactions).
+  - Provide inline synchronized SVG code with clean CSS keyframe animations for each scene element.
+  - Ensure all SVG graphics use vector primitives that scale flawlessly to 9:16 vertical and 16:9 horizontal formats.
 * Tanpa wajah pada tokoh.
 * Jangan mengarang fakta yang tidak ada di ide atau data pengguna.
 * Setiap scene harus mungkin dibuat dengan 5-15 bentuk dan maksimal 3 aset dekorasi.
@@ -412,6 +416,10 @@ Prinsip desain scene:
 - Suara: 1-4 s.sfx di level atas, selaras dengan gerakan; jangan memanggil sfx di dalam kondisi waktu.
 - Tanpa wajah, tanpa emoji, tanpa logo merek.
 - Scene harus bisa dipahami tanpa suara.
+- [KINETIC SVG & ANIMATION SYSTEM]:
+  - When generating SVG visual scenes, incorporate lively animated SVG paths and keyframes inspired by LivelyIcons (stroke-dasharray draw animations, scale pulses, float oscillations, and kinetic micro-interactions).
+  - Provide inline synchronized SVG code with clean CSS keyframe animations for each scene element.
+  - Ensure all SVG graphics use vector primitives that scale flawlessly to 9:16 vertical and 16:9 horizontal formats.
 - Jangan menggambar latar, subtitle, transisi, atau kamera; engine sudah mengurus.
 
 Kontrak kode:

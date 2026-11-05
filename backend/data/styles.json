@@ -1,98 +1,926 @@
 [
   {
-    "slug": "neu-soft",
-    "name": "Neu-Soft",
-    "category": "Tenang",
+    "slug": "pop-ceria",
+    "name": "Pop Ceria",
+    "category": "Ceria & Energik",
     "theme": "paper",
-    "palette": ["#E4EBF5", "#3F7BFF", "#2A62E0", "#1F2D4A"],
+    "palette": [
+      "#FF595E",
+      "#FFCA3A",
+      "#8AC926",
+      "#1982C4"
+    ],
     "finishing": "flat",
     "heavy": false,
-    "descriptionForPrompt": "permukaan biru es yang lembut, bentuk membulat, bayangan halus, satu aksen biru tegas, komposisi lapang dan tenang",
-    "transitions": ["fade", "slide", "zoom"],
-    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy, scale: s.lerp(0.72, 1, k), rotate: s.wave(0.35, 0.025) }, () => { s.circle(0, 0, 150 * s.p, { fill: s.c.blue, alpha: 0.18 }); s.rect(-120, -90, 240, 180, { r: 28, fill: s.c.paper }); s.asset(\"spark\", 150, -110, { size: 40, color: s.c.yellow, draw: k, rotate: s.wave(0.3, 0.08) }); s.words(\"Ide jadi nyata\", 0, 150, { size: 42, color: s.c.ink, mode: \"rise\", start: 0.15 }); }); s.sfx(\"pop\", 0.1, 0.6);"
-  },
-  {
-    "slug": "modern-flat",
-    "name": "Modern Flat",
-    "category": "Ilustrasi",
-    "theme": "paper",
-    "palette": ["#FFFFFF", "#FF6B6B", "#14B8A6", "#1F2D4A"],
-    "finishing": "flat",
-    "heavy": false,
-    "descriptionForPrompt": "ilustrasi flat geometris, warna solid, garis tegas, ruang putih lega, satu objek fokus di tengah",
-    "transitions": ["slide", "wipe", "fade"],
-    "sampleCode": "const k = s.at(0, 0.45); s.group({ x: s.cx, y: s.cy, scale: 0.9 + 0.1 * k }, () => { s.rect(-180, -220, 360, 440, { r: 24, fill: s.c.white, stroke: s.c.ink, width: 5 }); s.circle(-60, -110, 46, { fill: s.c.red }); s.rect(-120, 10, 240, 28, { r: 14, fill: s.c.ink, draw: k }); s.rect(-120, 60, 180, 22, { r: 11, fill: s.c.teal, draw: k }); s.words(\"Lebih sederhana\", 0, 230, { size: 36, color: s.c.ink, mode: \"slide\", start: 0.25 }); }); s.sfx(\"tick\", 0.2, 0.4);"
-  },
-  {
-    "slug": "papan-tulis",
-    "name": "Papan Tulis",
-    "category": "Ilustrasi",
-    "theme": "paper",
-    "palette": ["#F7F1DE", "#1F2D4A", "#1F9D6B", "#B7791F"],
-    "finishing": "sketch",
-    "heavy": false,
-    "descriptionForPrompt": "gambar tangan di atas kertas, garis tinta sedikit bergetar, arsiran ringan, nuansa catatan personal",
-    "transitions": ["fade", "wipe", "slide"],
-    "sampleCode": "const k = s.spring(0, \"smooth\"); s.group({ x: s.cx, y: s.cy + 20, rotate: -0.02 }, () => { s.rect(-220, -260, 440, 520, { r: 18, fill: s.c.paper, stroke: s.c.ink, width: 3, wobble: 1 }); s.line(-180, -160, 180, -160, { stroke: s.c.ink, width: 3, draw: k, wobble: 1 }); s.words(\"Catat idemu\", 0, -80, { size: 44, color: s.c.ink, mode: \"fade\", start: 0.2 }); s.check(-120, 40, 46, { stroke: s.c.green, width: 5, draw: k }); s.line(-60, 40, 150, 40, { stroke: s.c.ink, width: 3, draw: k }); }); s.sfx(\"type\", 0.15, 0.5);"
+    "descriptionForPrompt": "warna primer cerah, bentuk bulat besar, gerakan memantul, komposisi simetris yang ramai tapi rapi",
+    "transitions": [
+      "zoom",
+      "slide",
+      "fade"
+    ],
+    "sampleCode": "const k = s.spring(0, \"bouncy\"); const colors = [s.c.red, s.c.yellow, s.c.green, s.c.blue]; s.group({ x: s.cx, y: s.cy }, () => { colors.forEach((color, i) => { const angle = i * Math.PI / 2 + s.wave(0.2, 0.15); s.circle(Math.cos(angle) * 150, Math.sin(angle) * 150, 54, { fill: color, draw: k }); }); s.circle(0, 0, 96, { fill: s.c.white, stroke: s.c.ink, width: 4, draw: k }); s.asset(\"star\", 0, -180, { size: 46, color: s.c.yellow, draw: k }); s.words(\"Ayo mulai\", 0, 250, { size: 40, color: s.c.ink, mode: \"pop\", start: 0.2 }); }); s.sfx(\"tada\", 0.1, 0.6);"
   },
   {
     "slug": "kertas-gunting",
     "name": "Kertas Gunting",
-    "category": "Pop",
+    "category": "Ceria & Energik",
     "theme": "paper",
-    "palette": ["#FFD166", "#EF476F", "#118AB2", "#1F2D4A"],
+    "palette": [
+      "#FFD166",
+      "#EF476F",
+      "#118AB2",
+      "#1F2D4A"
+    ],
     "finishing": "sketch",
     "heavy": false,
     "descriptionForPrompt": "bentuk kertas gunting berlapis, tepi sedikit kasar, warna ceria, bayangan potongan yang tegas",
-    "transitions": ["slide", "zoom", "fade"],
+    "transitions": [
+      "slide",
+      "zoom",
+      "fade"
+    ],
     "sampleCode": "const k = s.pop(0, 0.55); s.group({ x: s.cx, y: s.cy, rotate: s.wave(0.25, 0.04) }, () => { s.shape([[-170, -140], [0, -220], [170, -140], [140, 150], [0, 210], [-140, 150]], { fill: s.c.yellow, stroke: s.c.ink, width: 4, draw: k }); s.circle(0, -30, 52, { fill: s.c.red }); s.words(\"Potong jadi cerita\", 0, 210, { size: 34, color: s.c.ink, mode: \"pop\", start: 0.2 }); }); s.sfx(\"swish\", 0.2, 0.5);"
   },
   {
-    "slug": "futuristik-data",
-    "name": "Futuristik Data",
-    "category": "Teknologi",
+    "slug": "retro-arcade",
+    "name": "Retro Arcade",
+    "category": "Ceria & Energik",
     "theme": "night",
-    "palette": ["#0F172A", "#6EA0FF", "#14B8A6", "#F8FAFC"],
-    "finishing": "flat",
-    "heavy": true,
-    "descriptionForPrompt": "latar gelap, garis data bercahaya, grid tipis, biru dan teal neon, kesan presisi dan teknologi",
-    "transitions": ["zoom", "wipe", "slide"],
-    "sampleCode": "const k = s.spring(0, \"heavy\"); s.group({ x: s.cx, y: s.cy }, () => { for (let i = 0; i < 6; i += 1) { const h = 40 + 120 * s.rand(i); s.rect(-200 + i * 68, 120 - h, 44, h, { r: 8, fill: i % 2 ? s.c.teal : s.c.blue, draw: k }); } s.circle(0, -160, 90, { stroke: s.c.blue, width: 4, draw: k }); s.words(\"Data bicara\", 0, 240, { size: 38, color: s.c.white, mode: \"rise\", start: 0.2 }); }); s.sfx(\"riser\", 0.1, 0.5);"
-  },
-  {
-    "slug": "pop-ceria",
-    "name": "Pop Ceria",
-    "category": "Pop",
-    "theme": "paper",
-    "palette": ["#FF595E", "#FFCA3A", "#8AC926", "#1982C4"],
+    "palette": [
+      "#FF0055",
+      "#00E5FF",
+      "#FFE600",
+      "#1A1A2E"
+    ],
     "finishing": "flat",
     "heavy": false,
-    "descriptionForPrompt": "warna primer cerah, bentuk bulat besar, gerakan memantul, komposisi simetris yang ramai tapi rapi",
-    "transitions": ["zoom", "slide", "fade"],
-    "sampleCode": "const k = s.spring(0, \"bouncy\"); const colors = [s.c.red, s.c.yellow, s.c.green, s.c.blue]; s.group({ x: s.cx, y: s.cy }, () => { colors.forEach((color, i) => { const angle = i * Math.PI / 2 + s.wave(0.2, 0.15); s.circle(Math.cos(angle) * 150, Math.sin(angle) * 150, 54, { fill: color, draw: k }); }); s.circle(0, 0, 96, { fill: s.c.white, stroke: s.c.ink, width: 4, draw: k }); s.asset(\"star\", 0, -180, { size: 46, color: s.c.yellow, draw: k }); s.words(\"Ayo mulai\", 0, 250, { size: 40, color: s.c.ink, mode: \"pop\", start: 0.2 }); }); s.sfx(\"tada\", 0.1, 0.6);"
+    "descriptionForPrompt": "gaya 8-bit ceria, neon arcade retro, warna kontras tinggi dengan aksen kuning dan sian menyala",
+    "transitions": [
+      "wipe",
+      "zoom",
+      "slide"
+    ],
+    "sampleCode": "const k = s.spring(0, \"bouncy\"); s.group({ x: s.cx, y: s.cy }, () => { s.rect(-150, -100, 300, 200, { r: 16, fill: s.c.navy, stroke: s.c.yellow, width: 4, draw: k }); s.words(\"LEVEL UP\", 0, 0, { size: 48, color: s.c.red, mode: \"pop\", start: 0.1 }); }); s.sfx(\"coin\", 0.15, 0.7);"
+  },
+  {
+    "slug": "neon-funky",
+    "name": "Neon Funky",
+    "category": "Ceria & Energik",
+    "theme": "night",
+    "palette": [
+      "#FF007F",
+      "#7928CA",
+      "#00DFD8",
+      "#F5A623"
+    ],
+    "finishing": "flat",
+    "heavy": true,
+    "descriptionForPrompt": "warna gradasi cerah magenta dan cyan, gerakan ritmik dinamis, aksen pop glowing yang enerjik",
+    "transitions": [
+      "zoom",
+      "slide",
+      "fade"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 140, { fill: s.c.pink, alpha: 0.3, draw: k }); s.words(\"Vibe Asik\", 0, 0, { size: 44, color: s.c.white, mode: \"rise\", start: 0.15 }); }); s.sfx(\"riser\", 0.1, 0.6);"
+  },
+  {
+    "slug": "komik-strip",
+    "name": "Komik Strip",
+    "category": "Ceria & Energik",
+    "theme": "paper",
+    "palette": [
+      "#FF3366",
+      "#FFD23F",
+      "#3BCEAC",
+      "#0E131F"
+    ],
+    "finishing": "sketch",
+    "heavy": false,
+    "descriptionForPrompt": "panel komik dinamis dengan outline tebal, bubble dialog meledak, balon kata dan aksi dramatis",
+    "transitions": [
+      "slide",
+      "zoom",
+      "wipe"
+    ],
+    "sampleCode": "const k = s.pop(0, 0.4); s.group({ x: s.cx, y: s.cy }, () => { s.rect(-160, -120, 320, 240, { r: 8, stroke: s.c.ink, width: 6, fill: s.c.yellow, draw: k }); s.words(\"POW!\", 0, 0, { size: 56, color: s.c.red, mode: \"pop\", start: 0.1 }); }); s.sfx(\"boom\", 0.15, 0.7);"
+  },
+  {
+    "slug": "motion-candy",
+    "name": "Motion Candy",
+    "category": "Ceria & Energik",
+    "theme": "paper",
+    "palette": [
+      "#FF6B8B",
+      "#FF8E53",
+      "#FFA07A",
+      "#2E384D"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "warna permen pastel cerah, permen karet elastis, gelembung membal, transisi manis nan lincah",
+    "transitions": [
+      "zoom",
+      "fade",
+      "slide"
+    ],
+    "sampleCode": "const k = s.spring(0, \"bouncy\"); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 110, { fill: s.c.pink, draw: k }); s.words(\"Manis Seru\", 0, 160, { size: 36, color: s.c.ink, mode: \"pop\", start: 0.2 }); }); s.sfx(\"boing\", 0.1, 0.6);"
+  },
+  {
+    "slug": "bold-streetwear",
+    "name": "Bold Streetwear",
+    "category": "Ceria & Energik",
+    "theme": "night",
+    "palette": [
+      "#FF3E3E",
+      "#FFDE59",
+      "#00C9A7",
+      "#121212"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "estetika streetwear urban, font tebal miring, warna merah dan kuning punchy, tipografi raksasa",
+    "transitions": [
+      "wipe",
+      "slide",
+      "zoom"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.rect(-200, -80, 400, 160, { fill: s.c.red, draw: k }); s.words(\"HYPE!\", 0, 0, { size: 64, color: s.c.white, mode: \"rise\", start: 0.1 }); }); s.sfx(\"impact\", 0.1, 0.8);"
+  },
+  {
+    "slug": "hyper-bounce",
+    "name": "Hyper Bounce",
+    "category": "Ceria & Energik",
+    "theme": "paper",
+    "palette": [
+      "#FF2E93",
+      "#FF8A00",
+      "#FFD600",
+      "#1E1E24"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "kecepatan tinggi dengan efek overshoot elastis, warna neon ceria, elemen melompat aktif",
+    "transitions": [
+      "zoom",
+      "slide",
+      "wipe"
+    ],
+    "sampleCode": "const k = s.spring(0, \"bouncy\"); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 120, { fill: s.c.orange, draw: k }); s.words(\"LOMPAT!\", 0, 0, { size: 48, color: s.c.ink, mode: \"pop\", start: 0.15 }); }); s.sfx(\"boing\", 0.12, 0.7);"
+  },
+  {
+    "slug": "sticker-bomb",
+    "name": "Sticker Bomb",
+    "category": "Ceria & Energik",
+    "theme": "paper",
+    "palette": [
+      "#FF477E",
+      "#FF85A1",
+      "#FBB1BD",
+      "#2A2D34"
+    ],
+    "finishing": "sketch",
+    "heavy": false,
+    "descriptionForPrompt": "kolase stiker warna-warni yang bertumpukan, border putih tebal, rotasi playful seperti casing laptop",
+    "transitions": [
+      "fade",
+      "zoom",
+      "slide"
+    ],
+    "sampleCode": "const k = s.pop(0, 0.45); s.group({ x: s.cx, y: s.cy }, () => { s.card(-140, -100, 280, 200, { r: 24, fill: s.c.white, stroke: s.c.ink, width: 4, draw: k }); s.words(\"Stiker Seru\", 0, 0, { size: 38, color: s.c.pink, mode: \"pop\", start: 0.15 }); }); s.sfx(\"stamp\", 0.15, 0.6);"
+  },
+  {
+    "slug": "solar-punk",
+    "name": "Solar Punk",
+    "category": "Ceria & Energik",
+    "theme": "paper",
+    "palette": [
+      "#F9A03F",
+      "#E9C46A",
+      "#2A9D8F",
+      "#264653"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "paduan energi matahari kuning keemasan dengan hijau botani, optimisme masa depan ramah lingkungan",
+    "transitions": [
+      "slide",
+      "fade",
+      "zoom"
+    ],
+    "sampleCode": "const k = s.at(0, 0.6); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, -50, 100, { fill: s.c.yellow, alpha: 0.8, draw: k }); s.words(\"Masa Depan\", 0, 140, { size: 36, color: s.c.navy, mode: \"rise\", start: 0.2 }); }); s.sfx(\"rise\", 0.2, 0.5);"
+  },
+  {
+    "slug": "neu-soft",
+    "name": "Neu-Soft",
+    "category": "Rapi & Modern",
+    "theme": "paper",
+    "palette": [
+      "#E4EBF5",
+      "#3F7BFF",
+      "#2A62E0",
+      "#1F2D4A"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "permukaan biru es yang lembut, bentuk membulat, bayangan halus, satu aksen biru tegas, komposisi lapang dan tenang",
+    "transitions": [
+      "fade",
+      "slide",
+      "zoom"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy, scale: s.lerp(0.72, 1, k), rotate: s.wave(0.35, 0.025) }, () => { s.circle(0, 0, 150 * s.p, { fill: s.c.blue, alpha: 0.18 }); s.rect(-120, -90, 240, 180, { r: 28, fill: s.c.paper }); s.asset(\"spark\", 150, -110, { size: 40, color: s.c.yellow, draw: k, rotate: s.wave(0.3, 0.08) }); s.words(\"Ide jadi nyata\", 0, 150, { size: 42, color: s.c.ink, mode: \"rise\", start: 0.15 }); }); s.sfx(\"pop\", 0.1, 0.6);"
+  },
+  {
+    "slug": "swiss-grid",
+    "name": "Swiss Grid",
+    "category": "Rapi & Modern",
+    "theme": "paper",
+    "palette": [
+      "#F4F4F6",
+      "#E63946",
+      "#1D3557",
+      "#457B9D"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "tipografi Helvetica rapi, grid asimetris ketat, aksen merah swiss berwibawa, sangat terstruktur",
+    "transitions": [
+      "slide",
+      "wipe",
+      "fade"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.line(-220, 0, 220, 0, { stroke: s.c.red, width: 4, draw: k }); s.words(\"Kerapian\", 0, -50, { size: 46, color: s.c.navy, mode: \"rise\", start: 0.1 }); }); s.sfx(\"tick\", 0.1, 0.5);"
+  },
+  {
+    "slug": "editorial-minimal",
+    "name": "Editorial Minimal",
+    "category": "Rapi & Modern",
+    "theme": "paper",
+    "palette": [
+      "#FAF7F2",
+      "#1A1A1A",
+      "#C5A880",
+      "#7D7461"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "estetika majalah gaya hidup premium, garis halus bernuansa sampanye, ruang bernapas luas dan elegan",
+    "transitions": [
+      "fade",
+      "slide",
+      "zoom"
+    ],
+    "sampleCode": "const k = s.at(0, 0.7); s.group({ x: s.cx, y: s.cy }, () => { s.rect(-160, -110, 320, 220, { stroke: s.c.gray, width: 1.5, draw: k }); s.words(\"Kemewahan Tenang\", 0, 0, { size: 40, color: s.c.ink, mode: \"fade\", start: 0.2 }); }); s.sfx(\"swish\", 0.2, 0.4);"
+  },
+  {
+    "slug": "nordic-clean",
+    "name": "Nordic Clean",
+    "category": "Rapi & Modern",
+    "theme": "paper",
+    "palette": [
+      "#ECEFF4",
+      "#88C0D0",
+      "#5E81AC",
+      "#2E3440"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "palet skandinavia sejuk, geometri sederhana, aksen biru glasial dengan harmoni fungsional",
+    "transitions": [
+      "fade",
+      "slide",
+      "wipe"
+    ],
+    "sampleCode": "const k = s.spring(0, \"smooth\"); s.group({ x: s.cx, y: s.cy }, () => { s.card(-150, -100, 300, 200, { r: 20, fill: s.c.white, draw: k }); s.words(\"Desain Nordik\", 0, 0, { size: 38, color: s.c.navy, mode: \"rise\", start: 0.15 }); }); s.sfx(\"click\", 0.1, 0.5);"
+  },
+  {
+    "slug": "monokrom-bold",
+    "name": "Monokrom Bold",
+    "category": "Rapi & Modern",
+    "theme": "paper",
+    "palette": [
+      "#FFFFFF",
+      "#71717A",
+      "#27272A",
+      "#09090B"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "hitam putih berani, tipografi kontras tinggi tanpa distraksi warna, ketegasan pesan maksimal",
+    "transitions": [
+      "wipe",
+      "slide",
+      "fade"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.rect(-180, -90, 360, 180, { fill: s.c.ink, draw: k }); s.words(\"FOKUS\", 0, 0, { size: 54, color: s.c.white, mode: \"pop\", start: 0.1 }); }); s.sfx(\"thud\", 0.1, 0.7);"
+  },
+  {
+    "slug": "bauhaus-modern",
+    "name": "Bauhaus Modern",
+    "category": "Rapi & Modern",
+    "theme": "paper",
+    "palette": [
+      "#EAE6DF",
+      "#D00000",
+      "#032B43",
+      "#FFBA08"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "bentuk dasar geometri lingkaran kotak segitiga, form follows function, warna primer berkarakter",
+    "transitions": [
+      "slide",
+      "zoom",
+      "wipe"
+    ],
+    "sampleCode": "const k = s.pop(0, 0.5); s.group({ x: s.cx, y: s.cy }, () => { s.circle(-80, 0, 60, { fill: s.c.red, draw: k }); s.rect(40, -60, 100, 100, { fill: s.c.blue, draw: k }); s.words(\"Bauhaus\", 0, 120, { size: 42, color: s.c.ink, mode: \"rise\", start: 0.2 }); }); s.sfx(\"snap\", 0.15, 0.6);"
+  },
+  {
+    "slug": "glassmorphism",
+    "name": "Glassmorphism",
+    "category": "Rapi & Modern",
+    "theme": "paper",
+    "palette": [
+      "#E0E7FF",
+      "#6366F1",
+      "#4338CA",
+      "#1E1B4B"
+    ],
+    "finishing": "flat",
+    "heavy": true,
+    "descriptionForPrompt": "efek kaca es transparan dengan border lembut berkilau, gradasi indigo futuristik, kedalaman berlapis",
+    "transitions": [
+      "fade",
+      "zoom",
+      "slide"
+    ],
+    "sampleCode": "const k = s.spring(0, \"smooth\"); s.group({ x: s.cx, y: s.cy }, () => { s.card(-160, -110, 320, 220, { r: 24, fill: s.c.white, alpha: 0.6, stroke: s.c.blue, width: 2, draw: k }); s.words(\"Glass Refraction\", 0, 0, { size: 36, color: s.c.navy, mode: \"fade\", start: 0.15 }); }); s.sfx(\"ding\", 0.2, 0.5);"
+  },
+  {
+    "slug": "linear-gradient",
+    "name": "Linear Gradient",
+    "category": "Rapi & Modern",
+    "theme": "paper",
+    "palette": [
+      "#FAFAFA",
+      "#6366F1",
+      "#A855F7",
+      "#18181B"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "gradasi halus ungu ke biru khas produk SaaS terkemuka, modern, bersih dengan aksen glow tipis",
+    "transitions": [
+      "fade",
+      "slide",
+      "zoom"
+    ],
+    "sampleCode": "const k = s.at(0, 0.6); s.group({ x: s.cx, y: s.cy }, () => { s.card(-170, -100, 340, 200, { r: 18, fill: s.c.purple, alpha: 0.15, draw: k }); s.words(\"SaaS Modern\", 0, 0, { size: 42, color: s.c.ink, mode: \"rise\", start: 0.15 }); }); s.sfx(\"rise\", 0.15, 0.5);"
+  },
+  {
+    "slug": "corporate-sleek",
+    "name": "Corporate Sleek",
+    "category": "Rapi & Modern",
+    "theme": "paper",
+    "palette": [
+      "#F8FAFC",
+      "#0284C7",
+      "#0369A1",
+      "#0F172A"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "nuansa korporat terpercaya, biru laut profesional, kartu metrik rapi dan garis pemisah presisi",
+    "transitions": [
+      "slide",
+      "fade",
+      "wipe"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.card(-180, -90, 360, 180, { r: 12, fill: s.c.white, stroke: s.c.blue, width: 1, draw: k }); s.words(\"Solusi Bisnis\", 0, 0, { size: 38, color: s.c.navy, mode: \"rise\", start: 0.1 }); }); s.sfx(\"click\", 0.1, 0.6);"
+  },
+  {
+    "slug": "brutalist-clean",
+    "name": "Brutalist Clean",
+    "category": "Rapi & Modern",
+    "theme": "paper",
+    "palette": [
+      "#F5F5F5",
+      "#111111",
+      "#FF5400",
+      "#333333"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "neo-brutalism rapi dengan hard shadow hitam, sudut tajam presisi, aksen oranye terang berani",
+    "transitions": [
+      "wipe",
+      "slide",
+      "zoom"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.rect(-150, -80, 300, 160, { fill: s.c.yellow, stroke: s.c.ink, width: 4, draw: k }); s.words(\"BRUTAL!\", 0, 0, { size: 50, color: s.c.ink, mode: \"pop\", start: 0.1 }); }); s.sfx(\"thud\", 0.1, 0.7);"
   },
   {
     "slug": "lanskap-tenang",
     "name": "Lanskap Tenang",
-    "category": "Tenang",
+    "category": "Tenang & Lembut",
     "theme": "dusk",
-    "palette": ["#F4E1C1", "#2A9D8F", "#7A9E7E", "#264653"],
+    "palette": [
+      "#F4E1C1",
+      "#2A9D8F",
+      "#7A9E7E",
+      "#264653"
+    ],
     "finishing": "sketch",
     "heavy": false,
     "descriptionForPrompt": "lanskap minimal bergaya cat air, horizon lapang, warna bumi dan hijau tenang, gerak lambat seperti angin",
-    "transitions": ["fade", "slide", "wipe"],
+    "transitions": [
+      "fade",
+      "slide",
+      "wipe"
+    ],
     "sampleCode": "const k = s.at(0, 0.8); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, -120, 70, { fill: s.c.yellow, alpha: 0.9 }); s.line(-260, 90, 260, 90, { stroke: s.c.teal, width: 6, draw: k }); s.shape([[-260, 90], [-120, -40], [0, 70], [120, -70], [260, 90]], { fill: s.c.green, draw: k }); s.words(\"Tarik napas\", 0, 200, { size: 40, color: s.c.ink, mode: \"fade\", start: 0.25 }); }); s.sfx(\"ding\", 0.3, 0.4);"
   },
   {
-    "slug": "tipografi-kinetik",
-    "name": "Tipografi Kinetik",
-    "category": "Tipografi",
+    "slug": "pastel-cozy",
+    "name": "Pastel Cozy",
+    "category": "Tenang & Lembut",
     "theme": "paper",
-    "palette": ["#F8FAFC", "#1F2D4A", "#3F7BFF", "#D6E4FF"],
+    "palette": [
+      "#FDE2E4",
+      "#FFCAD4",
+      "#B5E2FA",
+      "#4A5568"
+    ],
     "finishing": "flat",
     "heavy": false,
-    "descriptionForPrompt": "teks besar sebagai objek utama, kata masuk satu per satu, garis aksen tipis, komposisi editorial yang bersih",
-    "transitions": ["slide", "wipe", "fade"],
-    "sampleCode": "const k = s.at(0, 0.5); s.group({ x: s.cx, y: s.cy }, () => { s.words(\"SATU KATA\", 0, -80, { size: 54, color: s.c.ink, mode: \"slide\", start: 0, gap: 0.05 }); s.words(\"SATU GERAK\", 0, 30, { size: 54, color: s.c.blue, mode: \"rise\", start: 0.15, gap: 0.05 }); s.rect(-170, 120, 340, 8, { r: 4, fill: s.c.primary, draw: k }); }); s.sfx(\"whoosh\", 0.1, 0.4);"
+    "descriptionForPrompt": "nuansa hangat kamar santai, warna merah muda dan biru pastel menenangkan, atmosfer lembut relaksasi",
+    "transitions": [
+      "fade",
+      "zoom",
+      "slide"
+    ],
+    "sampleCode": "const k = s.spring(0, \"smooth\"); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 130, { fill: s.c.pink, alpha: 0.4, draw: k }); s.words(\"Waktu Rehat\", 0, 0, { size: 38, color: s.c.ink, mode: \"fade\", start: 0.2 }); }); s.sfx(\"ding\", 0.25, 0.5);"
+  },
+  {
+    "slug": "sage-serenity",
+    "name": "Sage Serenity",
+    "category": "Tenang & Lembut",
+    "theme": "paper",
+    "palette": [
+      "#E8ECE9",
+      "#9CAF88",
+      "#526E48",
+      "#2F3E2C"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "hijau sage alami, daun lembut dan bentuk organik, damai dan menyegarkan mata penonton",
+    "transitions": [
+      "fade",
+      "slide",
+      "wipe"
+    ],
+    "sampleCode": "const k = s.at(0, 0.75); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, -40, 90, { fill: s.c.green, alpha: 0.3, draw: k }); s.words(\"Ketenangan Diri\", 0, 130, { size: 36, color: s.c.navy, mode: \"fade\", start: 0.2 }); }); s.sfx(\"swish\", 0.2, 0.3);"
+  },
+  {
+    "slug": "warm-latte",
+    "name": "Warm Latte",
+    "category": "Tenang & Lembut",
+    "theme": "paper",
+    "palette": [
+      "#F7EBE1",
+      "#DDBEA9",
+      "#B79CED",
+      "#6B705C"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "aroma kopi hangat sore hari, warna krem latte dan karamel gurih, sentuhan intim dan nyaman",
+    "transitions": [
+      "fade",
+      "slide",
+      "zoom"
+    ],
+    "sampleCode": "const k = s.spring(0, \"smooth\"); s.group({ x: s.cx, y: s.cy }, () => { s.card(-140, -90, 280, 180, { r: 24, fill: s.c.paper, draw: k }); s.words(\"Secangkir Kopi\", 0, 0, { size: 38, color: s.c.ink, mode: \"fade\", start: 0.15 }); }); s.sfx(\"ding\", 0.2, 0.4);"
+  },
+  {
+    "slug": "ocean-breeze",
+    "name": "Ocean Breeze",
+    "category": "Tenang & Lembut",
+    "theme": "paper",
+    "palette": [
+      "#E0F2FE",
+      "#38BDF8",
+      "#0284C7",
+      "#0C4A6E"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "debur ombak pantai sepoi-sepoi, gradasi biru laut dangkal ke dalam, sangat lapang dan menyegarkan",
+    "transitions": [
+      "slide",
+      "fade",
+      "wipe"
+    ],
+    "sampleCode": "const k = s.at(0, 0.8); s.group({ x: s.cx, y: s.cy }, () => { s.line(-240, 50, 240, 50, { stroke: s.c.teal, width: 4, draw: k }); s.words(\"Hembusan Laut\", 0, -40, { size: 40, color: s.c.navy, mode: \"fade\", start: 0.2 }); }); s.sfx(\"swish\", 0.2, 0.4);"
+  },
+  {
+    "slug": "lavender-mist",
+    "name": "Lavender Mist",
+    "category": "Tenang & Lembut",
+    "theme": "dusk",
+    "palette": [
+      "#F3E8FF",
+      "#C084FC",
+      "#7E22CE",
+      "#3B0764"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "kabut ungu lembut senja, ketenangan pikiran mendalam, aksen ungu kerajaan yang anggun",
+    "transitions": [
+      "fade",
+      "zoom",
+      "slide"
+    ],
+    "sampleCode": "const k = s.spring(0, \"smooth\"); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 120, { fill: s.c.purple, alpha: 0.25, draw: k }); s.words(\"Malam Damai\", 0, 0, { size: 38, color: s.c.white, mode: \"fade\", start: 0.2 }); }); s.sfx(\"ding\", 0.3, 0.5);"
+  },
+  {
+    "slug": "zen-garden",
+    "name": "Zen Garden",
+    "category": "Tenang & Lembut",
+    "theme": "paper",
+    "palette": [
+      "#F5F5F0",
+      "#A3B18A",
+      "#588157",
+      "#344E41"
+    ],
+    "finishing": "sketch",
+    "heavy": false,
+    "descriptionForPrompt": "taman batu pasir jepang, pola gelombang meditatif, kesederhanaan abadi dan keseimbangan batin",
+    "transitions": [
+      "fade",
+      "wipe",
+      "slide"
+    ],
+    "sampleCode": "const k = s.at(0, 0.9); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, -60, 50, { fill: s.c.gray, draw: k }); s.words(\"Keseimbangan\", 0, 120, { size: 36, color: s.c.ink, mode: \"fade\", start: 0.25 }); }); s.sfx(\"bell\", 0.2, 0.4);"
+  },
+  {
+    "slug": "futuristik-data",
+    "name": "Futuristik Data",
+    "category": "Teknologi & Data",
+    "theme": "night",
+    "palette": [
+      "#0F172A",
+      "#6EA0FF",
+      "#14B8A6",
+      "#F8FAFC"
+    ],
+    "finishing": "flat",
+    "heavy": true,
+    "descriptionForPrompt": "latar gelap, garis data bercahaya, grid tipis, biru dan teal neon, kesan presisi dan teknologi",
+    "transitions": [
+      "zoom",
+      "wipe",
+      "slide"
+    ],
+    "sampleCode": "const k = s.spring(0, \"heavy\"); s.group({ x: s.cx, y: s.cy }, () => { for (let i = 0; i < 6; i += 1) { const h = 40 + 120 * s.rand(i); s.rect(-200 + i * 68, 120 - h, 44, h, { r: 8, fill: i % 2 ? s.c.teal : s.c.blue, draw: k }); } s.circle(0, -160, 90, { stroke: s.c.blue, width: 4, draw: k }); s.words(\"Data bicara\", 0, 240, { size: 38, color: s.c.white, mode: \"rise\", start: 0.2 }); }); s.sfx(\"riser\", 0.1, 0.5);"
+  },
+  {
+    "slug": "cyber-matrix",
+    "name": "Cyber Matrix",
+    "category": "Teknologi & Data",
+    "theme": "night",
+    "palette": [
+      "#0D1117",
+      "#00FF66",
+      "#00AA44",
+      "#C9D1D9"
+    ],
+    "finishing": "flat",
+    "heavy": true,
+    "descriptionForPrompt": "terminal hacker hijau neon, kode biner mengalir, estetika matrix digital mutakhir",
+    "transitions": [
+      "wipe",
+      "slide",
+      "zoom"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.rect(-180, -90, 360, 180, { stroke: s.c.green, width: 2, fill: s.c.navy, draw: k }); s.words(\"> ACCESS GRANTED\", 0, 0, { size: 34, color: s.c.green, mode: \"pop\", start: 0.1 }); }); s.sfx(\"type\", 0.1, 0.7);"
+  },
+  {
+    "slug": "hologram-hud",
+    "name": "Hologram HUD",
+    "category": "Teknologi & Data",
+    "theme": "night",
+    "palette": [
+      "#0B192C",
+      "#00E5FF",
+      "#1E3E62",
+      "#E0F7FA"
+    ],
+    "finishing": "flat",
+    "heavy": true,
+    "descriptionForPrompt": "antarmuka heads-up display fiksi ilmiah, lingkaran konsentris berputar, koordinat dan target",
+    "transitions": [
+      "zoom",
+      "slide",
+      "fade"
+    ],
+    "sampleCode": "const k = s.spring(0, \"heavy\"); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 130, { stroke: s.c.blue, width: 2, draw: k }); s.circle(0, 0, 80, { stroke: s.c.teal, width: 1, draw: k }); s.words(\"SYSTEM READY\", 0, 180, { size: 32, color: s.c.white, mode: \"rise\", start: 0.15 }); }); s.sfx(\"riser\", 0.15, 0.6);"
+  },
+  {
+    "slug": "fintech-chart",
+    "name": "Fintech Chart",
+    "category": "Teknologi & Data",
+    "theme": "night",
+    "palette": [
+      "#111827",
+      "#10B981",
+      "#3B82F6",
+      "#F9FAFB"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "grafik candlestick saham dan crypto, kurva pertumbuhan hijau naik, indikator finansial cerdas",
+    "transitions": [
+      "slide",
+      "wipe",
+      "zoom"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.line(-180, 80, 180, -80, { stroke: s.c.green, width: 5, draw: k }); s.words(\"+324% PROFIT\", 0, -120, { size: 40, color: s.c.green, mode: \"pop\", start: 0.1 }); }); s.sfx(\"coin\", 0.15, 0.7);"
+  },
+  {
+    "slug": "terminal-code",
+    "name": "Terminal Code",
+    "category": "Teknologi & Data",
+    "theme": "night",
+    "palette": [
+      "#181825",
+      "#A6E3A1",
+      "#89B4FA",
+      "#CDD6F4"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "editor kode modern ala Catppuccin, syntax highlighting rapi, kursor mengetik interaktif",
+    "transitions": [
+      "wipe",
+      "slide",
+      "fade"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.card(-170, -100, 340, 200, { r: 12, fill: s.c.navy, draw: k }); s.words(\"npm run dev\", 0, 0, { size: 36, color: s.c.green, mode: \"type\", start: 0.1 }); }); s.sfx(\"type\", 0.1, 0.6);"
+  },
+  {
+    "slug": "ai-neural",
+    "name": "AI Neural",
+    "category": "Teknologi & Data",
+    "theme": "night",
+    "palette": [
+      "#0A0F1D",
+      "#818CF8",
+      "#C084FC",
+      "#F1F5F9"
+    ],
+    "finishing": "flat",
+    "heavy": true,
+    "descriptionForPrompt": "jaringan saraf buatan berdenyut, node terhubung garis sinapsis bercahaya, kecerdasan komputasi",
+    "transitions": [
+      "zoom",
+      "fade",
+      "slide"
+    ],
+    "sampleCode": "const k = s.at(0, 0.6); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 100, { fill: s.c.purple, alpha: 0.3, draw: k }); s.words(\"Model Inference\", 0, 140, { size: 36, color: s.c.white, mode: \"rise\", start: 0.15 }); }); s.sfx(\"magic\", 0.15, 0.6);"
+  },
+  {
+    "slug": "quantum-flux",
+    "name": "Quantum Flux",
+    "category": "Teknologi & Data",
+    "theme": "night",
+    "palette": [
+      "#030712",
+      "#6366F1",
+      "#EC4899",
+      "#E5E7EB"
+    ],
+    "finishing": "flat",
+    "heavy": true,
+    "descriptionForPrompt": "partikel kuantum berputar cepat, orbit atom bersilangan, warna fuchsia dan ultraviolet menyala",
+    "transitions": [
+      "zoom",
+      "slide",
+      "wipe"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 110, { stroke: s.c.pink, width: 3, draw: k }); s.words(\"Quantum Bit\", 0, 0, { size: 40, color: s.c.white, mode: \"pop\", start: 0.15 }); }); s.sfx(\"riser\", 0.1, 0.6);"
+  },
+  {
+    "slug": "deep-space",
+    "name": "Deep Space",
+    "category": "Teknologi & Data",
+    "theme": "night",
+    "palette": [
+      "#050814",
+      "#38BDF8",
+      "#818CF8",
+      "#F8FAFC"
+    ],
+    "finishing": "flat",
+    "heavy": true,
+    "descriptionForPrompt": "ruang angkasa tak berujung, konstelasi bintang terhubung data, atmosfer penjelajahan galaksi",
+    "transitions": [
+      "fade",
+      "zoom",
+      "slide"
+    ],
+    "sampleCode": "const k = s.at(0, 0.8); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 140, { fill: s.c.blue, alpha: 0.15, draw: k }); s.words(\"Beyond Limits\", 0, 0, { size: 42, color: s.c.white, mode: \"fade\", start: 0.2 }); }); s.sfx(\"whoosh\", 0.2, 0.5);"
+  },
+  {
+    "slug": "dark-dashboard",
+    "name": "Dark Dashboard",
+    "category": "Teknologi & Data",
+    "theme": "night",
+    "palette": [
+      "#1E293B",
+      "#38BDF8",
+      "#F59E0B",
+      "#F1F5F9"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "panel analitik gelap profesional, card metrik rapi dengan badge persentase dan progress bar",
+    "transitions": [
+      "slide",
+      "wipe",
+      "fade"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.card(-160, -90, 320, 180, { r: 16, fill: s.c.navy, stroke: s.c.blue, width: 1, draw: k }); s.words(\"Total Visitors\", 0, -20, { size: 28, color: s.c.gray, mode: \"fade\", start: 0.1 }); s.words(\"1.2M\", 0, 30, { size: 52, color: s.c.yellow, mode: \"pop\", start: 0.2 }); }); s.sfx(\"ding\", 0.15, 0.6);"
+  },
+  {
+    "slug": "sketsa-tangan",
+    "name": "Sketsa Tangan",
+    "category": "Gambar Tangan",
+    "theme": "paper",
+    "palette": [
+      "#FAFAF9",
+      "#1C1917",
+      "#78716C",
+      "#E7E5E4"
+    ],
+    "finishing": "sketch",
+    "heavy": false,
+    "descriptionForPrompt": "sketsa pensil arang di atas kertas bertekstur, garis tangan organik tidak sempurna yang otentik",
+    "transitions": [
+      "fade",
+      "slide",
+      "wipe"
+    ],
+    "sampleCode": "const k = s.at(0, 0.7); s.group({ x: s.cx, y: s.cy }, () => { s.rect(-140, -90, 280, 180, { stroke: s.c.ink, width: 3, hatch: true, draw: k }); s.words(\"Goresan Asli\", 0, 0, { size: 38, color: s.c.ink, mode: \"fade\", start: 0.2 }); }); s.sfx(\"type\", 0.1, 0.4);"
+  },
+  {
+    "slug": "doodle-notebook",
+    "name": "Doodle Notebook",
+    "category": "Gambar Tangan",
+    "theme": "paper",
+    "palette": [
+      "#FFFDF0",
+      "#2B2D42",
+      "#D90429",
+      "#8D99AE"
+    ],
+    "finishing": "sketch",
+    "heavy": false,
+    "descriptionForPrompt": "coretan buku tulis bergaris, panah lucu, lingkaran highlight merah spidol, spontan dan personal",
+    "transitions": [
+      "zoom",
+      "slide",
+      "fade"
+    ],
+    "sampleCode": "const k = s.pop(0, 0.5); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 110, { stroke: s.c.red, width: 4, wobble: true, draw: k }); s.words(\"Catatan Penting\", 0, 0, { size: 36, color: s.c.ink, mode: \"pop\", start: 0.15 }); }); s.sfx(\"swish\", 0.15, 0.5);"
+  },
+  {
+    "slug": "crayon-story",
+    "name": "Crayon Story",
+    "category": "Gambar Tangan",
+    "theme": "paper",
+    "palette": [
+      "#FFFBEB",
+      "#F59E0B",
+      "#EF4444",
+      "#3B82F6"
+    ],
+    "finishing": "sketch",
+    "heavy": false,
+    "descriptionForPrompt": "tekstur krayon lilin tebal, warna-warni cerita anak, bentuk naif yang menggemaskan dan jujur",
+    "transitions": [
+      "fade",
+      "zoom",
+      "slide"
+    ],
+    "sampleCode": "const k = s.spring(0, \"bouncy\"); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 100, { fill: s.c.yellow, stroke: s.c.orange, width: 6, draw: k }); s.words(\"Cerita Kita\", 0, 150, { size: 38, color: s.c.ink, mode: \"pop\", start: 0.2 }); }); s.sfx(\"boing\", 0.1, 0.6);"
+  },
+  {
+    "slug": "vintage-press",
+    "name": "Vintage Press",
+    "category": "Gambar Tangan",
+    "theme": "paper",
+    "palette": [
+      "#F2EBD9",
+      "#3E2723",
+      "#8D6E63",
+      "#D7CCC8"
+    ],
+    "finishing": "sketch",
+    "heavy": false,
+    "descriptionForPrompt": "cetakan kayu tempo dulu, tinta luntur estetik, tekstur koran lawas bernilai sejarah",
+    "transitions": [
+      "fade",
+      "wipe",
+      "slide"
+    ],
+    "sampleCode": "const k = s.at(0, 0.7); s.group({ x: s.cx, y: s.cy }, () => { s.rect(-160, -100, 320, 200, { stroke: s.c.brown, width: 4, draw: k }); s.words(\"KLASIK\", 0, 0, { size: 48, color: s.c.brown, mode: \"fade\", start: 0.2 }); }); s.sfx(\"stamp\", 0.15, 0.6);"
+  },
+  {
+    "slug": "water-color",
+    "name": "Water Color",
+    "category": "Gambar Tangan",
+    "theme": "paper",
+    "palette": [
+      "#F8FAFC",
+      "#60A5FA",
+      "#34D399",
+      "#1E293B"
+    ],
+    "finishing": "sketch",
+    "heavy": false,
+    "descriptionForPrompt": "sapuan kuas cat air basah mengalir di atas kertas menyerap, gradasi lembut alami tanpa garis kaku",
+    "transitions": [
+      "fade",
+      "zoom",
+      "slide"
+    ],
+    "sampleCode": "const k = s.at(0, 0.8); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 120, { fill: s.c.blue, alpha: 0.4, draw: k }); s.words(\"Sapuan Indah\", 0, 0, { size: 38, color: s.c.ink, mode: \"fade\", start: 0.2 }); }); s.sfx(\"swish\", 0.2, 0.4);"
+  },
+  {
+    "slug": "chalkboard",
+    "name": "Chalkboard",
+    "category": "Gambar Tangan",
+    "theme": "night",
+    "palette": [
+      "#1A252C",
+      "#FFFFFF",
+      "#FACC15",
+      "#4ADE80"
+    ],
+    "finishing": "sketch",
+    "heavy": false,
+    "descriptionForPrompt": "papan tulis kapur berdebu, tulisan rumus dan ilustrasi guru di kelas, edukatif dan nostalgic",
+    "transitions": [
+      "wipe",
+      "fade",
+      "slide"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.rect(-170, -100, 340, 200, { stroke: s.c.white, width: 3, draw: k }); s.words(\"Belajar Bersama\", 0, 0, { size: 36, color: s.c.yellow, mode: \"type\", start: 0.15 }); }); s.sfx(\"tick\", 0.1, 0.5);"
+  },
+  {
+    "slug": "otomatis",
+    "name": "Otomatis",
+    "category": "Spesial",
+    "theme": "paper",
+    "palette": [
+      "#FF6B00",
+      "#7C3AED",
+      "#2563EB",
+      "#0F172A"
+    ],
+    "finishing": "flat",
+    "heavy": false,
+    "descriptionForPrompt": "Claude memilih gaya yang paling cocok dengan ide videomu saat menulis narasi.",
+    "transitions": [
+      "zoom",
+      "slide",
+      "fade"
+    ],
+    "sampleCode": "const k = s.spring(0, \"snappy\"); s.group({ x: s.cx, y: s.cy }, () => { s.circle(0, 0, 130, { fill: s.c.orange, alpha: 0.3, draw: k }); s.words(\"Kecerdasan AI\", 0, 0, { size: 44, color: s.c.ink, mode: \"pop\", start: 0.15 }); }); s.sfx(\"magic\", 0.1, 0.7);"
+  },
+  {
+    "slug": "cinematic-trailer",
+    "name": "Cinematic Trailer",
+    "category": "Spesial",
+    "theme": "night",
+    "palette": [
+      "#0B0C10",
+      "#C5A880",
+      "#E0E0E0",
+      "#1F2833"
+    ],
+    "finishing": "flat",
+    "heavy": true,
+    "descriptionForPrompt": "rasio sinematik dramatis, pencahayaan moody keemasan, transisi fade gelap megah bagai teaser bioskop",
+    "transitions": [
+      "fade",
+      "zoom",
+      "wipe"
+    ],
+    "sampleCode": "const k = s.at(0, 0.9); s.group({ x: s.cx, y: s.cy }, () => { s.words(\"SEGERA HADIR\", 0, 0, { size: 48, color: s.c.white, mode: \"fade\", start: 0.2 }); }); s.sfx(\"boom\", 0.2, 0.8);"
   }
 ]

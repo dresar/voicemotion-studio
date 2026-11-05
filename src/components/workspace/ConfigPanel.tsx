@@ -19,6 +19,7 @@ import { id } from "@/lib/i18n/id";
 import { clamp, cn } from "@/lib/utils";
 import { useProjectStore } from "@/store/project";
 import { useStyleStore } from "@/store/styles";
+import { getCustomTemplates, customTemplateToStylePack } from "@/lib/customTemplates";
 import type {
   ContentType,
   DecorationStyle,
@@ -66,7 +67,14 @@ export function ConfigPanel({
     }
   }, [config.durationSec]);
 
-  const selectedStyle = styles.find((style) => style.slug === config.styleSlug) ?? null;
+  const selectedStyle =
+    styles.find((style) => style.slug === config.styleSlug) ??
+    (typeof window !== "undefined"
+      ? getCustomTemplates()
+          .map(customTemplateToStylePack)
+          .find((style) => style.slug === config.styleSlug)
+      : null) ??
+    null;
   const selectedFont = APP_CONFIG.sceneFonts.find((font) => font.id === config.sceneFont) ?? APP_CONFIG.sceneFonts[0];
   const validation = validateConfig(config);
   const brandMode = config.brandColor === "follow_style" ? "follow_style" : "custom";

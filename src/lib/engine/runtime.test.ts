@@ -46,14 +46,16 @@ function createMockContext() {
 }
 
 function readStylePacks(): StylePack[] {
-  const filePath = path.resolve(process.cwd(), "../backend/data/styles.json");
+  const primary = path.resolve(process.cwd(), "backend/data/styles.json");
+  const fallback = path.resolve(process.cwd(), "../backend/data/styles.json");
+  const filePath = fs.existsSync(primary) ? primary : fallback;
   return JSON.parse(fs.readFileSync(filePath, "utf8")) as StylePack[];
 }
 
 describe("engine runtime", () => {
   it("menjalankan semua sample code style pack", () => {
     const styles = readStylePacks();
-    expect(styles).toHaveLength(8);
+    expect(styles.length).toBeGreaterThanOrEqual(8);
     styles.forEach((style) => {
       const scan = prescanCode(style.sampleCode);
       expect(scan.ok, `${style.slug}: ${scan.reason}`).toBe(true);

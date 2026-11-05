@@ -36,13 +36,21 @@ import { cn, copyText, formatDuration, readClipboard } from "@/lib/utils";
 import { useAuthStore } from "@/store/auth";
 import { useProjectStore } from "@/store/project";
 import { useStyleStore } from "@/store/styles";
+import { getCustomTemplates, customTemplateToStylePack } from "@/lib/customTemplates";
 import type { AIProvider, StartFrom, TabId } from "@/types";
 
 function SettingsSummary({ onEdit }: { onEdit: () => void }) {
   const config = useProjectStore((state) => state.config);
   const selectedIdea = useProjectStore((state) => state.selectedIdea);
   const styles = useStyleStore((state) => state.styles);
-  const styleName = styles.find((style) => style.slug === config.styleSlug)?.name ?? "Neu-Soft";
+  const styleName =
+    styles.find((style) => style.slug === config.styleSlug)?.name ??
+    (typeof window !== "undefined"
+      ? getCustomTemplates()
+          .map(customTemplateToStylePack)
+          .find((style) => style.slug === config.styleSlug)?.name
+      : null) ??
+    "Neu-Soft";
 
   return (
     <Card variant="raised" padding="md" className="space-y-3">
@@ -99,7 +107,14 @@ export function WorkspaceView() {
   const clearError = useProjectStore((state) => state.clearError);
 
   const styles = useStyleStore((state) => state.styles);
-  const selectedStyle = styles.find((style) => style.slug === config.styleSlug) ?? null;
+  const selectedStyle =
+    styles.find((style) => style.slug === config.styleSlug) ??
+    (typeof window !== "undefined"
+      ? getCustomTemplates()
+          .map(customTemplateToStylePack)
+          .find((style) => style.slug === config.styleSlug)
+      : null) ??
+    null;
 
   const [projectSheetOpen, setProjectSheetOpen] = useState(false);
   const [styleOpen, setStyleOpen] = useState(false);
