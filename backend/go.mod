@@ -15,6 +15,7 @@ require (
 	cloud.google.com/go/compute/metadata v0.10.0 // indirect
 	github.com/dustin/go-humanize v1.1.0 // indirect
 	github.com/labstack/gommon v0.5.0 // indirect
+	github.com/lib/pq v1.12.3 // indirect
 	github.com/mattn/go-colorable v0.1.15 // indirect
 	github.com/mattn/go-isatty v0.0.24 // indirect
 	github.com/ncruces/go-strftime v1.1.0 // indirect

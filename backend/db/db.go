@@ -101,7 +101,23 @@ CREATE TABLE IF NOT EXISTS system_settings (
 `
 
 func Open(cfg config.Config) (*sql.DB, error) {
-	dsn := cfg.DatabaseURL
+	dsn := strings.TrimSpace(cfg.DatabaseURL)
+	if strings.HasPrefix(dsn, "postgres://") || strings.HasPrefix(dsn, "postgresql://") {
+		connection, err := sql.Open("neonsql", dsn)
+		if err != nil {
+			return nil, err
+		}
+		connection.SetMaxOpenConns(10)
+		connection.SetMaxIdleConns(5)
+		connection.SetConnMaxLifetime(15 * time.Minute)
+		if err := connection.Ping(); err != nil {
+			connection.Close()
+			return nil, err
+		}
+		log.Printf("Berhasil terhubung ke Neon Serverless PostgreSQL Database.")
+		return connection, nil
+	}
+
 	if !strings.HasPrefix(dsn, "file:") {
 		dsn = "file:" + dsn
 	}
@@ -119,6 +135,7 @@ func Open(cfg config.Config) (*sql.DB, error) {
 		connection.Close()
 		return nil, err
 	}
+	log.Printf("Terhubung ke SQLite Database.")
 	return connection, nil
 }
 
