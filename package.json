@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "build:ui": "next build",
-    "sync:static": "powershell -NoProfile -Command \"Copy-Item -Path out\\* -Destination static -Recurse -Force\"",
+    "sync:static": "powershell -NoProfile -Command \"if (Test-Path static) { Remove-Item -Path static\\* -Recurse -Force }; Copy-Item -Path out\\* -Destination static -Recurse -Force\"",
     "build:server": "cd backend && go build -o ../voicemotion.exe .",
-    "build": "next build && powershell -NoProfile -Command \"Copy-Item -Path out\\* -Destination static -Recurse -Force\" && cd backend && go build -o ../voicemotion.exe .",
+    "build": "next build && powershell -NoProfile -Command \"if (Test-Path static) { Remove-Item -Path static\\* -Recurse -Force }; Copy-Item -Path out\\* -Destination static -Recurse -Force\" && cd backend && go build -o ../voicemotion.exe .",
     "server": "./voicemotion.exe",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
