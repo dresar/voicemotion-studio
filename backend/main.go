@@ -30,6 +30,9 @@ func main() {
 	if err := db.SeedAdmin(connection, cfg); err != nil {
 		log.Printf("Seed admin dilewati: %v", err)
 	}
+	if err := db.SeedSettings(connection, cfg); err != nil {
+		log.Printf("Seed settings dilewati: %v", err)
+	}
 	if err := os.MkdirAll(filepath.Join(cfg.UploadDir, "tts"), 0o755); err != nil {
 		log.Printf("Folder upload tidak bisa dibuat: %v", err)
 	}

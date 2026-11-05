@@ -4,6 +4,7 @@ import (
 	"crypto/rand"
 	"database/sql"
 	"encoding/hex"
+	"encoding/json"
 	"log"
 	"strings"
 	"time"
@@ -12,6 +13,7 @@ import (
 	_ "modernc.org/sqlite"
 
 	"voicemotion/config"
+	"voicemotion/models"
 )
 
 const schema = `
@@ -186,6 +188,98 @@ func SeedAdmin(connection *sql.DB, cfg config.Config) error {
 	}
 	log.Printf("Akun admin dibuat untuk %s", email)
 	return nil
+}
+
+func SeedSettings(connection *sql.DB, cfg config.Config) error {
+	var count int
+	err := connection.QueryRow("SELECT COUNT(*) FROM system_settings WHERE key = 'main_settings'").Scan(&count)
+	if err == nil && count > 0 {
+		return nil
+	}
+
+	payload := models.SystemSettingsPayload{
+		AIRouter: models.AIRouterSettings{
+			ActiveProvider: "bynara",
+			FallbackAuto:   true,
+			Temperature:    0.7,
+			TopP:           0.9,
+			MaxTokens:      4096,
+			SystemPrompt:   "Kamu adalah asisten sutradara dan animator kreatif Voicemotion Studio. Berikan ide narasi dan kode adegan yang padat, menarik, dan sesuai kaidah visual modern.",
+			ByNara: models.ByNaraConfig{
+				Enabled:      true,
+				BaseURL:      "https://router.bynara.id/v1",
+				APIKey:       cfg.ByNaraAPIKey,
+				SecondaryKey: cfg.ByNaraSecondaryKey,
+				DefaultModel: "deepseek-v4-pro",
+				Models: []string{
+					"deepseek-v4-pro",
+					"deepseek-v4-flash",
+					"claude-haiku-5.5",
+					"claude-opus-5.5",
+					"gpt-6-astra",
+					"gpt-5.6-luna",
+					"kimi-k2.7-code",
+					"qwen3.8-max-alibaba",
+					"mimo-v2.5-pro",
+				},
+			},
+			Sumopod: models.SumopodConfig{
+				Enabled:      true,
+				BaseURL:      "https://ai.sumopod.com/v1",
+				APIKey:       cfg.SumopodAPIKey,
+				DefaultModel: "deepseek-v4.1-flash:netra",
+			},
+			Gemini: models.GeminiConfig{
+				Enabled:      true,
+				APIKeys:      cfg.GeminiAPIKeys,
+				DefaultModel: "gemini-2.0-flash",
+			},
+			Custom: models.CustomAIConfig{
+				Enabled:      false,
+				BaseURL:      "http://localhost:11434/v1",
+				APIKey:       "",
+				DefaultModel: "llama3",
+			},
+			TaskRouting: models.TaskRoutingConfig{
+				TopicsModel:    "deepseek-v4.1-flash:netra",
+				ScriptModel:    "deepseek-v4-pro",
+				AnimationModel: "kimi-k2.7-code",
+				VoiceModel:     "claude-haiku-5.5",
+			},
+		},
+		Platform: models.PlatformSettings{
+			TTSEngine:          "edge-tts",
+			DefaultVoice:       "id-ID-GadisNeural",
+			TTSTimeoutSeconds:  cfg.TTSTimeoutSeconds,
+			TrialDays:          cfg.TrialDays,
+			TrialCredits:       2,
+			TrialQuota:         1,
+			StarterCredits:     60,
+			ProCredits:         200,
+			AutoCleanupOrphan:  false,
+			JWTExpiryHours:     cfg.JWTExpiryHours,
+			MaintenanceMode:    false,
+			GoogleClientID:     cfg.GoogleClientID,
+			GoogleClientSecret: cfg.GoogleClientSecret,
+		},
+	}
+
+	encoded, err := json.Marshal(payload)
+	if err != nil {
+		return err
+	}
+
+	now := time.Now().UTC().Format(time.RFC3339)
+	_, err = connection.Exec(
+		`INSERT INTO system_settings (key, value, updated_at)
+		 VALUES ('main_settings', ?, ?)
+		 ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value, updated_at = EXCLUDED.updated_at`,
+		string(encoded), now,
+	)
+	if err == nil {
+		log.Printf("Pengaturan AI dan Router API Key berhasil disimpan ke database Neon.")
+	}
+	return err
 }
 
 func randomID() string {
