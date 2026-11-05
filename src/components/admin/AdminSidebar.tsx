@@ -117,7 +117,7 @@ export function AdminSidebar({
     <>
       <aside
         className={cn(
-          "hidden h-screen shrink-0 border-r border-line/70 bg-raised transition-all duration-200 md:sticky md:top-0 md:flex md:flex-col justify-between overflow-y-auto neu-scrollbar",
+          "h-screen shrink-0 border-r border-line/70 bg-raised transition-all duration-200 sticky top-0 flex flex-col justify-between overflow-y-auto neu-scrollbar z-30",
           isCollapsed ? "w-16 p-2" : "w-60 xl:w-64 p-4"
         )}
       >

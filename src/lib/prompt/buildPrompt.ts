@@ -397,21 +397,44 @@ export function buildScenePrompt(input: PromptBuildInput): string {
   const sampleCode = style?.sampleCode ?? "";
   const marker = "/" + "/";
   const font = sceneFontDefinition(config);
-  return `Kamu adalah senior motion designer, creative technologist, dan penulis kode canvas yang sudah membuat ratusan video vertikal. Kamu membenci template AI generik. Tugasmu menulis kode scene yang terasa seperti dibuat studio desain berkelas: komposisi bersih, tipografi disengaja, warna terkontrol, gerak halus, dan dekorasi yang mendukung pesan.
+  const palette = (style?.palette ?? ["#ffffff", "#18161a", "#e0218a", "#8d8790", "#e4dfda"]).join(", ");
 
+  return `<inputs>
+Project: VoiceMotion Studio Kinetic Video Engine
 ${audienceBrief(config)}
 
-${visualDirectionBlock(config, style)}
+Font video: ${font.label} (${font.family}, weight: ${font.weight})
+Dekorasi: ${decorationLabel(config)} (intensitas ${config.decorationIntensity}%)
+Tekstur: ${textureLabel(config)}
+Gaya Subtitle: ${subtitleLabel(config)}
+Theme & Style: ${style?.name ?? "Neu-Soft"}
+Visual Description: ${style?.descriptionForPrompt ?? "Kinetic visual layout"}
+Color Palette: ${palette}
+Tempo: ${tempoNotes[config.tempo] ?? "energik"}
 
-${creativeStandards()}
+Aset dekorasi pilihan pengguna:
+${preferredAssetsBlock(config)}
 
+Katalog aset SVG yang valid (hanya ID ini, gunakan s.asset):
+${assetCatalog()}
+
+Scene Breakdown:
+${scenes
+  .map(
+    (s) => `SCENE ${s.idx + 1}
+Narasi: ${s.narration}
+Visual: ${s.visual}
+Durasi: ${s.durationSec}s`
+  )
+  .join("\n\n")}
+</inputs>
+
+<direction>
 Prinsip desain scene:
 - Komposisi: gunakan grid 3x3, satu titik fokus utama, dan ruang kosong yang cukup. Objek utama memakai 55-85% lebar area ilustrasi.
 - Hirarki: satu headline, satu subteks opsional, satu aksen. Jangan menaruh lima teks sekaligus.
 - Tipografi: font ${font.label} (weight ${font.weight}); headline 46-64, subteks 26-34, label 16-20; line-height 1.1-1.25; maksimal dua baris untuk headline; hindari teks miring kecuali gaya memang mendukung.
 - Warna: pilih 2-4 warna dari s.c, gunakan satu aksen, dan pastikan kontras teks minimal 4.5:1.
-- Dekorasi: ${decorationLabel(config)} dengan intensitas ${config.decorationIntensity}%. Tekstur ${textureLabel(config)} sudah digambar engine; jangan menggambar tekstur latar sendiri.
-- Aset SVG: gunakan s.asset untuk aksen, maksimal 3 per scene, ukuran 24-140, jangan menutupi teks. Jangan menggambar SVG mentah, tag HTML, atau gambar eksternal.
 - Gerak: masuk 0-0.35 detik, idle motion halus, klimaks 55-80%, semua animasi masuk selesai sebelum durasi - 0.25. Gunakan spring/at/pop; hindari gerakan linear yang kaku.
 - Suara: 1-4 s.sfx di level atas, selaras dengan gerakan; jangan memanggil sfx di dalam kondisi waktu.
 - Tanpa wajah, tanpa emoji, tanpa logo merek.
@@ -421,50 +444,72 @@ Prinsip desain scene:
   - Provide inline synchronized SVG code with clean CSS keyframe animations for each scene element.
   - Ensure all SVG graphics use vector primitives that scale flawlessly to 9:16 vertical and 16:9 horizontal formats.
 - Jangan menggambar latar, subtitle, transisi, atau kamera; engine sudah mengurus.
+</direction>
 
-Kontrak kode:
-${contractRules}
+<structure>
+${scenes
+  .map(
+    (s) => `SCENE ${s.idx + 1}
+Narasi: ${s.narration}
+Visual: ${s.visual}
+Expected Output Marker: ${marker} ===== SCENE ${s.idx + 1} =====
+Timeline:
+- 0.0s - 0.35s: Entrance with directional blur or snappy spring.
+- 0.5s - 2.5s: Kinetic element reveal / typewriter text / checklist item.
+- 2.5s - 5.5s: Focal illustration or card action with wave oscillation.
+- 5.5s - ${s.durationSec}s: Climax burst, sound effect, and lock into resting state.`
+  )
+  .join("\n\n")}
+</structure>
 
-Kanvas:
-${aspectSpec(config)} Gunakan s.W, s.H, s.cx, s.cy, s.safe, dan s.groundY agar adaptif.
+<build>
+You MUST write pure JavaScript using only the s engine context API.
 
-API engine:
+Canvas Engine API Reference:
 ${engineApiSummary}
-
-Katalog aset SVG yang valid (hanya ID ini):
-${assetCatalog()}
-
-Aset dekorasi pilihan pengguna:
-${preferredAssetsBlock(config)}
 
 Contoh kerangka kode (tiru polanya, bukan isinya):
 ${sceneSkeleton}
 
-Contoh gaya dari style pack:
+Example High-Craft Pattern (Replicate this exact code style):
 ${codeFence()}js
-${sampleCode}
+const MG = "#e0218a", INK = "#18161a", MU = "#8d8790", LINE = "#e4dfda";
+const flat = { wobble: 0, hatch: false };
+const zip = (t0, len, dx, dy, fn) => {
+  const k = s.ease.out(s.clamp((s.t - t0) / len, 0, 1));
+  if (k <= 0) return;
+  const v = 1 - k;
+  for (let i = 4; i > 0 && v > 0.02; i--) s.group({ x: dx * v + dx * v * i * 0.12, y: dy * v + dy * v * i * 0.12, alpha: 0.036 * v * (5 - i) }, fn);
+  s.group({ x: dx * v, y: dy * v, alpha: Math.min(1, k * 2.5) }, fn);
+};
+const card = (x, y, w, h, r = 22) => {
+  s.rect(x, y + 10, w, h, { r, fill: "#000000", stroke: "none", alpha: 0.06, ...flat });
+  s.rect(x, y, w, h, { r, fill: "#ffffff", stroke: LINE, width: 2, ...flat });
+};
 ${codeFence()}
 
-Tugas:
-Tulis kode untuk scene berikut. Tiap scene berdiri sendiri dan hanya melihat s serta ctx. Variasikan komposisi antar scene; jangan mengulang tata letak yang sama.
-${scenesBlock(scenes)}
+${sampleCode ? `Style Sample Reference:\n${codeFence()}js\n${sampleCode}\n${codeFence()}` : ""}
+</build>
 
+<gotchas>
+CRITICAL CONSTRAINTS — ANY VIOLATION RENDERS THE CODE UNUSABLE:
+1. STRICTLY NO HTML, NO CSS, NO DOM, NO CANVAS GETCONTEXT, NO REACT/JSX! Output pure JavaScript scene code ONLY.
+2. NO function wrappers around the scene code (do NOT write function scene1(s) { ... }). The engine evaluates the code body directly with s and ctx in scope.
+3. NO persistent state across frames (no module-level variables storing mutable values). All positions, scales, and states MUST be purely derived from s.t.
+4. NO Math.random(), NO setInterval(), NO setTimeout(), NO requestAnimationFrame(). Use s.rand(seed) for deterministic randomness.
+5. NO comments inside the code (zero code comments). Keep code compact and production-clean.
+6. Scene markers MUST be exact:
+${scenes.map((s) => `${marker} ===== SCENE ${s.idx + 1} =====`).join("\n")}
+7. Wrap every scene inside a SINGLE markdown code block: ${codeFence()}js ... ${codeFence()}.
+
+Quality gate kode:
 ${sceneQualityChecklist()}
+</gotchas>
 
-Aturan jawaban:
-- Satu blok kode js berisi semua scene.
-- Penanda SCENE harus persis, berurutan, dan tidak diulang di dalam body.
-- Jangan memakai artifact, canvas, atau penjelasan di luar blok.
-- Jangan menambahkan komentar di dalam kode.
-- Jika ada scene yang tidak yakin, tetap tulis scene paling sederhana yang kuat; jangan mengosongkan.
-
-Format jawaban:
-SEMUA scene dalam SATU blok kode ${codeFence()}js, dipisah baris penanda persis:
-${marker} ===== SCENE 1 =====
-${marker} ...kode...
-${marker} ===== SCENE 2 =====
-${marker} ...kode...
-Jangan memecah menjadi beberapa blok. Jangan memakai artifact atau canvas. Jangan menambahkan penjelasan di luar format.`;
+<start>
+Write the complete procedural JavaScript canvas animation code for all scenes now.
+Start immediately with ${marker} ===== SCENE ${scenes[0]?.idx ? scenes[0].idx + 1 : 1} =====.
+</start>`;
 }
 
 export function buildRepairPrompt(input: RepairPromptInput): string {

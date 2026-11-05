@@ -603,15 +603,40 @@ export function StylePicker({ open, onClose }: StylePickerProps) {
 
           <div>
             <label className="block text-[11px] font-bold text-ink mb-1">
-              Slot Video URL / Referensi
+              Slot Video (Upload File atau URL)
             </label>
-            <input
-              type="url"
-              value={formVideoUrl}
-              onChange={(e) => setFormVideoUrl(e.target.value)}
-              placeholder="https://... atau biarkan kosong"
-              className="neu-field h-8.5 w-full text-xs"
-            />
+            <div className="flex gap-2">
+              <input
+                type="url"
+                value={formVideoUrl}
+                onChange={(e) => setFormVideoUrl(e.target.value)}
+                placeholder="https://... atau upload file ->"
+                className="neu-field h-8.5 flex-1 text-xs"
+              />
+              <label className="flex h-8.5 shrink-0 items-center gap-1.5 px-3 rounded-md bg-sunken border border-line text-[11px] font-bold text-muted hover:text-ink cursor-pointer hover:border-primary/40 transition">
+                <Icon name="upload" size={13} />
+                <span>Upload</span>
+                <input
+                  type="file"
+                  accept="video/mp4,video/webm"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      const url = URL.createObjectURL(file);
+                      setFormVideoUrl(url);
+                      showToast("File video lokal berhasil dipilih!", "success");
+                    }
+                  }}
+                  className="hidden"
+                />
+              </label>
+            </div>
+            {formVideoUrl ? (
+              <p className="mt-1 text-[10px] text-success font-semibold flex items-center gap-1 truncate">
+                <Icon name="check" size={11} />
+                <span>Video terhubung: {formVideoUrl.startsWith("blob:") ? "File video lokal" : formVideoUrl}</span>
+              </p>
+            ) : null}
           </div>
 
           <div>
