@@ -1,0 +1,68 @@
+[
+  {
+    "id": "lofi-chill",
+    "name": "Lo-Fi Study Beat",
+    "category": "Lo-Fi & Santai",
+    "bpm": 80,
+    "mood": "Fokus, Santai, Edukasi, Storytelling",
+    "recommendedVolume": 0.20,
+    "duckingRatio": 0.30,
+    "synthPreset": "lofi",
+    "description": "Irama lo-fi lembut dengan denting piano hangat dan vinyl crackle."
+  },
+  {
+    "id": "cinematic-ambient",
+    "name": "Cinematic Ambient Horizon",
+    "category": "Sinematik & Inspiratif",
+    "bpm": 90,
+    "mood": "Epik, Inspiratif, Perjalanan, Motivasi",
+    "recommendedVolume": 0.18,
+    "duckingRatio": 0.25,
+    "synthPreset": "ambient",
+    "description": "Pad atmosferik luas dengan progresi chord mendalam dan hangat."
+  },
+  {
+    "id": "acoustic-warmth",
+    "name": "Acoustic Morning Sunshine",
+    "category": "Akustik & Hangat",
+    "bpm": 105,
+    "mood": "Hangat, Ramah, Keluarga, Keseharian",
+    "recommendedVolume": 0.22,
+    "duckingRatio": 0.35,
+    "synthPreset": "acoustic",
+    "description": "Petikan dawai hangat dan ritme organik yang bersahabat."
+  },
+  {
+    "id": "tech-minimal",
+    "name": "Tech Modern Pulse",
+    "category": "Teknologi & Bisnis",
+    "bpm": 115,
+    "mood": "Futuristik, Inovasi, AI, Presentasi Startup",
+    "recommendedVolume": 0.15,
+    "duckingRatio": 0.30,
+    "synthPreset": "techno",
+    "description": "Arpeggio elektronik presisi dengan bassline digital minimalis."
+  },
+  {
+    "id": "playful-bounce",
+    "name": "Playful Bounce Pop",
+    "category": "Ceria & Cepat",
+    "bpm": 125,
+    "mood": "Ceria, Hiburan, Humor, Promosi Cepat",
+    "recommendedVolume": 0.18,
+    "duckingRatio": 0.40,
+    "synthPreset": "bounce",
+    "description": "Ketukan ceria berenergi tinggi yang memikat perhatian penonton."
+  },
+  {
+    "id": "calm-piano",
+    "name": "Calm Reflections",
+    "category": "Menenangkan",
+    "bpm": 70,
+    "mood": "Reflektif, Tenang, Puisi, Narasi Emosional",
+    "recommendedVolume": 0.20,
+    "duckingRatio": 0.25,
+    "synthPreset": "piano",
+    "description": "Harmoni piano solo yang lembut dan menyentuh hati penonton."
+  }
+]

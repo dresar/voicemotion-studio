@@ -41,7 +41,12 @@ func main() {
 		log.Printf("Katalog gaya tidak bisa dimuat: %v", err)
 		styles = []models.StylePack{}
 	}
-	handler := handlers.New(connection, cfg, styles)
+	bgmTracks, err := handlers.LoadBgm(cfg.BgmPath)
+	if err != nil {
+		log.Printf("Katalog BGM tidak bisa dimuat: %v", err)
+		bgmTracks = []models.BgmTrack{}
+	}
+	handler := handlers.New(connection, cfg, styles, bgmTracks)
 
 	server := echo.New()
 	server.HideBanner = true
@@ -62,6 +67,8 @@ func main() {
 
 	server.GET("/api/styles", handler.ListStyles)
 	server.GET("/api/styles/:slug", handler.GetStyle)
+	server.GET("/api/bgm", handler.ListBgm)
+	server.GET("/api/bgm/:id", handler.GetBgm)
 	server.GET("/api/tts/audio/:filename", handler.ServeAudio)
 	server.POST("/api/gemini/suggest-topics", handler.SuggestTopics)
 

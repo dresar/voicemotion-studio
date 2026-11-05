@@ -65,6 +65,22 @@ export interface ProjectConfig {
   subtitleStyle: SubtitleStyle;
   preferredAssets: string[];
   ideaSet?: Idea[];
+  bgmTrack?: string;
+  bgmVolume?: number;
+  narrationVolume?: number;
+  autoDucking?: boolean;
+}
+
+export interface BgmTrack {
+  id: string;
+  name: string;
+  category: string;
+  bpm: number;
+  mood: string;
+  recommendedVolume: number;
+  duckingRatio: number;
+  synthPreset: string;
+  description: string;
 }
 
 export interface Idea {

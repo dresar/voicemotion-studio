@@ -10,6 +10,7 @@ import type {
   AITestRequest,
   AITestResponse,
   AuthResponse,
+  BgmTrack,
   ExportLog,
   Project,
   ProjectConfig,
@@ -134,6 +135,8 @@ export const api = {
   listStyles: () => apiFetch<StylePack[]>("/api/styles"),
 
   getStyle: (slug: string) => apiFetch<StylePack>(`/api/styles/${slug}`),
+
+  listBgm: () => apiFetch<BgmTrack[]>("/api/bgm"),
 
   listVoices: () => apiFetch<Voice[]>("/api/tts/voices"),
 

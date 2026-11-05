@@ -222,3 +222,15 @@ type Claims struct {
 	Email  string `json:"email"`
 	jwt.RegisteredClaims
 }
+
+type BgmTrack struct {
+	ID                string  `json:"id"`
+	Name              string  `json:"name"`
+	Category          string  `json:"category"`
+	BPM               int     `json:"bpm"`
+	Mood              string  `json:"mood"`
+	RecommendedVolume float64 `json:"recommendedVolume"`
+	DuckingRatio      float64 `json:"duckingRatio"`
+	SynthPreset       string  `json:"synthPreset"`
+	Description       string  `json:"description"`
+}

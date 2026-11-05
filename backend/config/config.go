@@ -25,6 +25,7 @@ type Config struct {
 	StaticDir          string
 	UploadDir          string
 	StylesPath         string
+	BgmPath            string
 	AdminEmail         string
 	AdminPassword      string
 	AppEnv             string
@@ -57,6 +58,7 @@ func Load() Config {
 	staticDir := resolvePath("STATIC_DIR", "./static", "../static", "./backend/static")
 	uploadDir := resolvePath("UPLOAD_DIR", "./uploads", "../uploads", "./backend/uploads")
 	stylesPath := resolvePath("STYLES_PATH", "./data/styles.json", "./backend/data/styles.json", "../data/styles.json")
+	bgmPath := resolvePath("BGM_PATH", "./data/bgm.json", "./backend/data/bgm.json", "../data/bgm.json")
 
 	return Config{
 		Port:               getenv("PORT", "3000"),
@@ -73,6 +75,7 @@ func Load() Config {
 		StaticDir:          staticDir,
 		UploadDir:          uploadDir,
 		StylesPath:         stylesPath,
+		BgmPath:            bgmPath,
 		AdminEmail:         getenv("ADMIN_EMAIL", "admin@example.com"),
 		AdminPassword:      getenv("ADMIN_PASSWORD", ""),
 		AppEnv:             getenv("APP_ENV", "development"),

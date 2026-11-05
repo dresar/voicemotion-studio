@@ -8,6 +8,7 @@ import { Icon } from "@/components/ui/Icon";
 import { Progress } from "@/components/ui/Progress";
 import { useToast } from "@/components/ui/Toast";
 import { SceneAudioPlayer } from "@/components/workspace/SceneAudioPlayer";
+import { BgmAudioMixer } from "@/components/workspace/BgmAudioMixer";
 import { APP_CONFIG } from "@/config/app";
 import { api, audioUrl } from "@/lib/api";
 import { messageFromError } from "@/lib/errors";
@@ -262,6 +263,8 @@ export function VoicePanel({ generateSignal }: VoicePanelProps) {
           ) : null}
         </div>
       </Card>
+
+      <BgmAudioMixer />
 
       {scenes.length === 0 ? (
         <EmptyState title={id.voice.empty} description={id.narration.emptyScenes} icon="mic" />
